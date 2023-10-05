@@ -10,5 +10,8 @@ async function bootstrap() {
   app.enableCors();
 
   await app.listen(_port);
+
+  console.log(`\n✅ The run it's OK! Congrats!`);
+  console.log(`🏠 Local env --> http://localhost:${_port}`);
 }
 bootstrap();

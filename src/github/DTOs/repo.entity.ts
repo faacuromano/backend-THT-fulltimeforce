@@ -1,9 +1,9 @@
-export class RepoDTO {
-  name: string;
-  privateRepo: boolean;
+export class DeepCommitDTO {
+  path: string;
+  type: string;
 
-  constructor(name: string, privateRepo: boolean) {
-    this.name = name;
-    this.privateRepo = privateRepo;
+  constructor(path: string, type: string) {
+    this.path = path;
+    this.type = type;
   }
 }
