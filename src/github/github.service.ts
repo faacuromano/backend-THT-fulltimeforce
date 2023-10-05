@@ -7,13 +7,17 @@ import { AxiosResponse } from 'axios';
 export class ApiService {
   constructor(private httpService: HttpService) {}
 
-  getAllCommits(): Observable<AxiosResponse<any>> {
-    const apiUrl = `https://api.github.com/repos/faacuromano/Saturno-BackEnd/commits`;
+  getAllCommits(user: string, repo: string): Observable<AxiosResponse<any>> {
+    const apiUrl = `https://api.github.com/repos/${user}/${repo}/commits`;
     return this.httpService.get(apiUrl);
   }
 
-  getCommitData(sha: string): Observable<AxiosResponse<any>> {
-    const apiUrl = `https://api.github.com/repos/faacuromano/Saturno-BackEnd/git/trees/${sha}`;
+  getCommitData(
+    user: string,
+    repo: string,
+    sha: string,
+  ): Observable<AxiosResponse<any>> {
+    const apiUrl = `https://api.github.com/repos/${user}/${repo}/git/trees/${sha}`;
     return this.httpService.get(apiUrl);
   }
 }

@@ -1,17 +1,20 @@
-// En el lugar donde necesitas utilizarlo (por ejemplo, un controlador)
-
 import { Controller, Get, Param } from '@nestjs/common';
-import { CommitDTO } from './github.entity';
+import { CommitDTO } from './DTOs/github.entity';
 import { ApiService } from './github.service';
 
 @Controller('v1/commits')
 export class UserController {
-  constructor(private readonly apiService: ApiService) {}
+  constructor(private readonly _apiService: ApiService) {}
 
-  @Get()
-  async getAllCommits(): Promise<CommitDTO[]> {
+  @Get(':user/:repo')
+  async getAllCommits(
+    @Param('user') user: string,
+    @Param('repo') repo: string,
+  ): Promise<CommitDTO[]> {
     try {
-      const commits = await this.apiService.getAllCommits().toPromise();
+      const commits = await this._apiService
+        .getAllCommits(user, repo)
+        .toPromise();
       return commits.data.map((commit) => {
         return new CommitDTO(
           commit.sha,
