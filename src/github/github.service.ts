@@ -6,7 +6,7 @@ import { AxiosResponse } from 'axios';
 @Injectable()
 export class ApiService {
   private readonly githubToken: string =
-    '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'; // Reemplaza con tu token
+    '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'; // Reemplaza con tu token
 
   constructor(private httpService: HttpService) {}
 
